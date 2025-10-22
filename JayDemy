@@ -1,0 +1,30 @@
+Q 01: An Nginx Deploy named nginx-static is Running in the nginx-static NS, It is configured using a cfgmap named nginx-config. update the nginx-config cfgMap
+to allow only TLSv1.3 connections.re-create , restart or scale resources as necessary, By using command to test the changes:
+
+Question 02: Migrate an existing web application from ingress to Gateway API, We must maintain HTTPSaccess.
+A Gatewayclass named nginx is installed in the cluster.
+First , create a gateway named web-gateway with hostname gateway.web.k8s.local that maintain the existing TLS and listeners configuration from the existing 
+ingress resource named web.
+Next, create an HTTPRoute named web-route with hostname gateway.web.k8s.local that maintains the existing routing rules from the current ingress resource 
+named web.  
+
+question 03: Create a new Horizontal POD Autoscaler( HPA) named apache-server in the autoscale namespace, This HPA must target the existing Depoyment called 
+apache-server in the autoscale namespace.  
+set the HPA to atrget for 50% CPU usage per pod, Configure hpa to have at min 1 pod and no more than 4 pods[max]. Also we have to set the downscale 
+stabilization window to 30 seconds.  
+
+question 04: Install and configure a container Network interface (CNI) of your choice that meets the specified requirements, choose one of the following
+CNI options:
+Falnnel (v0.26.1) [kube-flannel.yml]  
+Calico (V3.28.2) using the manifest: [tigera-opeator.yaml]   
+Ensure the selected CNI is properly installed and configured in the kubernetes cluster.  
+
+Question 05: Install and configure a container networl interface (CNI) of your choice that meets the specified reqirements. choose one of the following 
+CNI options: Falnnel using the manifest https://github/flannel  
+calico using the manifest: https://rwa.github  
+Ensure the selcted CNI is properly installed and configures in the kubernetes cluster.  
+The CNI you choose must:  Let pods communicate with each other support Network policy enforcemet Install from manifest files ( do not use Helm)  
+
+
+
+
