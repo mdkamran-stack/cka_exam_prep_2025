@@ -25,6 +25,59 @@ calico using the manifest: https://rwa.github
 Ensure the selcted CNI is properly installed and configures in the kubernetes cluster.  
 The CNI you choose must:  Let pods communicate with each other support Network policy enforcemet Install from manifest files ( do not use Helm)  
 
+Question 06: Install ArgoCD in cluster: Add the official Argo CD Helm repository with the name argo. The Argo CD CRDs have already been pre-installed in the
+cluster , generate a helm template of the Argo CD Helm chart version 7.7.3 for the argocd NS and save to /argo-helm.yaml confiure the chart to not install CRDs.
+Install Argo CD using Helm with release name argocd using the same version as above and configuration as use in the template 7.7.3 install it in the argocd ns 
+and configure it to not install CRDs. you dont need to access the Argo CD server UI.  
+
+Question 07: Create a new PriorityClass named high-priority for user workloads witha value that is one less than the highest existing user-defined priority 
+class value. Patch the existing Deployment busybox-logger running in the priority namespace to use the high-priority class. Ensure that the busybox-logger 
+Deployment rolls out successfully with the new priority class set, It is expected that pods from other Deployments running in the priority namespace are evicted.
+Dont modify other Deployments running in the priority namespace. Failure to do so may result in a reduced score.  
+
+Question 08: Reconfigure the existing Deployment front-end in namespace sp-culator to expose port 80/tcp of the existing container nginx. Create a new Service
+named front-end-svc exposing the container port 80/tcp. Configure the new Service to also expose the individual pods via & NodePort.  
+
+Question 09: Create a new Storageclass named low-latency that uses the existing provisioner rancer.io/loca-path. 
+Set the VolumeBinding Mode to Waitfor firstconsumer. (Mandatory or the score will be reduce) , Make the newly created StorageClass (low-latency) the default
+Storage class in the cluster. DO NOT modify any existing Deployments or PersistentVolumeClaims (if modified, the score will be reduced).  
+
+Question 10: A legacy app needs to be integrated into the kubernetes built-in logging architecture(i.e kubectl logs). Adding a stream co-located container is 
+a good common way to accomplish this requirements.  
+##TASK:## Update the existing Deployment synergy-deployment ,adding a co-located conatainer named sidecar using the busybox:stable image to the existing pod.
+The new co-located container has to run the following command: 
+## /bin/sh-c "tail -n+1 -f /var/log/synergy-deployment.log" ##
+Use a vloume mounted at /var/log to make the log file synergy-deployment.log availabe to the co located conatainer, don't modify the specification of the 
+existing conatiner other than adding the required, HINT: Use a shared volume to expose the log file B/W the main app conainer & the sidecar.  
+
+Question 11: Verify the cert-manager application which has been deployed in the cluster, create a list of all cert-manager custom resource definations (CRDs)
+and save it ot ~/resources.yaml. make sure kubectl default output format and use kubectl to list CRDs'. DO not set an output format.  
+failure to do so will result in a reduced score. Using Kubectl, extract the document for the subject specification filed of the certification custom resource 
+and save it to ~/subject.yaml, you may use any output format that kubcl supports.  
+
+Question 12: A wordpress app with 3 replicas in the relative-fawn namespace consist of CPU 1 memory 2015360ki , Adjust all pod resource request as follows:
+Divide node resources evenly across all 3 pods. give each pod a fair share of cpu and memory, add enough overhead to keep the node stable, use the exact same
+request for both containers and init containers you are not required to change any resource limits, 
+it may help to temporarily scale the wordpress deployment to 0 replicas while updating the resource requests, afte update , confirms.
+wordpress keep 3 replicas && all pods are running and ready.  
+
+Question13: A user accidentally delted the mariaDB Deployment in the mariadb namespace, which was configured with persistent storage. 
+your responsibility is to re-establish the deployment while ensuring date is preserved by resusing the available Persistent Volume.
+Task: A persistent Volume already exists and is retained for reuse. only one PV exists. Create a persistentVolume Claim (PVC) named mariadb in the mariadb NS
+with the spec: 
+Acess mode READWriteOnce and storage 250MI, edit the mariadb deploy file located at ~/mariadb-deploy.yaml to use PVC created in the previous step.
+Apply the updated Deployment file to the cluster, Ensure Mariadb is running and stable.  
+
+
+
+
+
+
+
+
+
+
+
 
 
 
