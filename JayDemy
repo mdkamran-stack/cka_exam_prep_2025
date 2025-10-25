@@ -76,7 +76,7 @@ Apply the updated Deployment file to the cluster, Ensure Mariadb is running and 
 Question 15: Prepare a linux system for kubernetes, Docker is already installed, but you need to configure it for kubeadm.
 Task: complete these tasks to prepare the system for kubernetes: Set uo cri-dockerd: Install the debian package: ~/cri-dockerd_0.3.9.3-0.ubuntu-jammy_amd64.deb
 Debian packages are installed using dpkg Enable and start the CRI-docker service Configure these system parameteres: 
-Set net.ipv6.conf.all.forwarding to 1  Set net.ipv4.ip_forward to 1  Set net.netfilter.nf_conntrack_max to 131072  
+Set net.bridge.bridge-nf-call-iptables to 1 Set net.ipv6.conf.all.forwarding to 1  Set net.ipv4.ip_forward to 1  Set net.netfilter.nf_conntrack_max to 131072  
 
 Question 16: we have frontend and backend deploy in seprate NS (frontend and backend), They need to communicate. 
 Analyze: Inspect the frontend and backend Deployments t understand their communication requirements.
@@ -98,6 +98,21 @@ IT kiddie and jayDemy ques
 4> create a new storage class is same
 5> Create a new PriorityClass named high-priority  same 
 6>  Create a new Ingress resources echo in echo-sound same 
+7>  Verify the cert-manager application which has been deployed same
+8> we have frontend and backend deploy in seprate NS same
+9> Create a new Horizontal POD Autoscaler same
+10> Create a new Horizontal POD Autoscaler same
+11>  A user accidentally delted the mariaDB Deployment same
+12> Prepare a linux system for kubernetes, Docker is already installed same
+13>  A kubeadm provisioned cluster was migrated to a new machine little diff 
+Question 16>  Reconfigure the existing Deployment front-end same
+ques 17>  An Nginx Deploy named nginx-static is R same
+Question 14 seems different IT kiddie 
+Question 15 seems diff Taint & olerations
+
+
+
+
 
 
 
