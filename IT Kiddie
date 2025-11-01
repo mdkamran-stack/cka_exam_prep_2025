@@ -1,0 +1,80 @@
+Prep for cka exam 30/10/2025
+
+ArgoCD question i have to complete it from UDEMY 
+Question 1: Install ArgoCD in a k8s cluster using Helm chart while ensuring that CRDs are not installed (as they are pre-installed). follow steps below.
+Requirements:
+Add the official ArgoCD Helm repository with the name argo.
+Generate a Helm template from the Argo CD chart version 7.7.3 for the argocd namespace.
+Ensure that CRDs are not installed by configuringthe ahrt accordingly.
+save the generated YAML manifest to /home/argo/argo-helm.yaml
+
+QUESTION 02: Update the existing deployment wordpress , adding a sidecar conatiner named sidecar using the busybox:stable image to the existing pod.
+The new sidecar container has to run the following command: "/bin/sh -c "tail -f /var/log/wordpress.log" use a volume mounted at /var/log to make the log file wordpress.log availabe to the
+co-located container. 
+
+QUESTION03: 
+You have an existing web application deployed in a kubernetes cluster using an Ingress resource named web. you must migrate the existing Ingress configuration to the new kubernetes Gateway API, 
+maintaining the existing HTTPS access configuration.
+
+TASK:
+ Create a Gateway resource named web-gateway with hostname gateway .web.k8s.local that maintains the existing TLS and listeners configuration from the exisitng Ingress resource named web.
+Create an HTTPRoute resource named web-route with hostname gateway.webk8s.local that maintanis the existing routing rules from the current Ingress resource named web.
+## NOTE: A Gateway named nginx-class is already installed in the cluster. 
+
+Question 04:
+you are managing a wordpress application running in a k8s cluster.
+your task is to adjust the pod resource request and limits to ensure stable operation . follow the instruction below:
+
+1. Scale down the wordpress Deployment to 0 replicas.
+2. Edit the Deployment and divide node resources evenly across all 3 pods.
+3. Assign fair and equal CPU and memory requests to each pod.
+4. Add sufficient overhead to avoid node instability.
+Ensure That both the init container and main container use exactly the sae resource requests and limits.
+After making the changes, scale the Deploymen back to 3 replicas.
+
+Question 05:
+Create a new StorageClass named local-kiddie with the provisioner rancher.io/local-path.
+set the volumeBindingMode to WaitForFirstConsumer.
+Configure the StorageClass as the deafult StorageClass.
+Do not modify any existing Deploymnet or PersistentVolumeClaims.
+
+Question06: Priority Class
+You're working in a k8s cluster with an existing Deployment named busybox-logger running in a namespace called priority.
+The cluster already ha at least one user-defined priority Class.
+Perform the following task:
+1. Create a new Priority class named high-priority for user workloads. The value of this proirity class should be exactly one less than the highest existing
+user-defined priority class value.
+2: Patch the existing Deployment busybox-logger in the priority namespace to use the newly created high-priority priority class.
+
+Question 07: Ingress Resource:
+Create a new Ingress resource named echo in echo-sound namespace.
+with the following tasks:
+1. Expose the deployment with a service named echo-service on http://example.org/echo using Service port 8080 type=NodePort
+2. The availability of service eco-service can be checked using the follwing command which should return 200:
+curl -o /dev/null -s -w "%{http_code}\n" http://example.org/echo 
+
+Question: 08 : CRD's
+TAsk:
+1. Create a list of all cert-manager [CRDs] and save it to ~/resource.yaml make sure kubectl use default output format and use kubectl to list CRD's.
+2. Using kubectl, extract the documentation for the subject specification field of the Certificate Custom Resource and save it to ~/subject.yaml
+You may use any output format that kubectl supports. 
+
+Question 09: Network Policy
+
+There are 2 deployments frotedn and backend 
+Frontend will be in frontedn namespace and backend will be in backend namespace.
+Task:
+Create a network policy to have interaction b/w frontedn and backend deployment The network policy has to be least permissive.
+
+Question 10: HPA
+Ceate a new HorizonatlPodAutoSacler {HPA} named apache-server in the autoscaler namespace.
+Task:
+1. This HPA must target the existing deployment called apache-deployment in the autoscale namespace.
+2: Set the HPA to target for 50% CPU usage per pod.
+3. Configure the HPA to have a minimum of 1 pod and maximum of 4 pods. also we have to set the downscale stabilization window to 30 seconds.
+
+
+
+
+
+
