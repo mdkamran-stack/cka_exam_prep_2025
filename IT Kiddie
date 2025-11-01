@@ -73,7 +73,65 @@ Task:
 2: Set the HPA to target for 50% CPU usage per pod.
 3. Configure the HPA to have a minimum of 1 pod and maximum of 4 pods. also we have to set the downscale stabilization window to 30 seconds.
 
+Question:11 Container network Interface [CNI]
+Install and configure a CNI of your choice that meet the specified requiremets, choose one of the following;
+Flannel (v0.26.1) using the manifest: [kube-flannel.yaml]
+(https://github.com/flannel-io/flannel/release/download/v0.26.1/kube-flannel.yml)
 
+Calico (v3.28.2) using the manifest: [tigera-operator.yaml]
+(https://raw.githubusercontent.com/projectcalico/calico/v3.28.2/manifest/tigera-operator.yaml)
+
+The CNI you choose must:
+
+1: Let pods communicate with eachother
+2: Support network policy enforcement
+3: Install from manifest
+
+Question 12: PVC
+A Persistent volume already exists and is retained for reuse.
+Create a PersistentVolumeClaim named Mariadb in the mariadb namespace as follows:
+1: Access mode ReadWriteOnce
+2: Storage capacity 250Mi
+Edit the mariadb in the file located at maria.deloy.yaml to use the newly created PVC. Verify the deployment is running & is stable.
+
+Question 13: CRI-Dockerd  --> Setup cri-dockerd
+Install the debian package ~/cri-dockerd_0.3.9.3-0.ubunut-jammy_amd64.deb using dpkg.
+Enable and start the cri-docker service
+1. Set net.bridge.bridge-nf-call-iptables to 1
+2. Set net.ipv6.conf.all.forward to 1
+3. Set net.ipv4.ip_forward to 1
+4. Set net.netfilter.nf_contrack_max to 11072
+
+Question 14: Troubleshooting
+After A cluster migration, the controlplane kube-apiserver is not coming up.
+"Before migration"
+etcd was external and in HA
+After migration kube-apiserver was pointing to ectd peer port 2380 instead of 2379 fir it.
+
+Question15: Taint & Toleration:
+Task:
+1. Add a taint to node01 so that no normal pods can be schedule in the node.
+2. key=IT value=kiddie Type=NoSchedule
+3. Schedule a pod on node01 adding the correct toleration to the spec and ensure that it lands on the correct node.
+
+Question 16: NodePort > There is a deployment named nodeport-deployment in the relative namespace.
+TASK:
+1. Configure the deployment so it can be exposed using port 80 and protocol TCP name http.
+2. Create a new Service named nodeport-service exposing the container port 80 and TCP 
+3. Configure the new Service to also expose the individual pods using Nodeport.
+
+Question 17: TLS 
+There is an existing deployment called nginx-static in the nginx-static namespace, The deployment conatins a ConfigMap that supports TLSv1.2 & TLSv1.3 & a 
+Secret for TLS   
+
+There is a service called nginx-static in the nginx-static namespace that is currently exposing the deployment.
+TASK:
+1. Configure the configma to only support TLSv1.3
+2. Add the IP address of the service in /ect/hosts and name ITkiddie.k8s.local
+3: verify that everything is working using the following command:
+
+Curl --tls-max 1.2 https://ITKiddie.k8.local -k  (TLSv1.2 should not work)
+Curl --tlsv1.3 https://ITKiddie.k8s.local -k 
 
 
 
