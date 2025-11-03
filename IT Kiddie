@@ -1,18 +1,21 @@
 Prep for cka exam 30/10/2025
 
 ArgoCD question i have to complete it from UDEMY 
-Question 1: Install ArgoCD in a k8s cluster using Helm chart while ensuring that CRDs are not installed (as they are pre-installed). follow steps below.
+-----------------------------------------------
+Question 1: ARGOCD  mock2 q 10 mock 3 
+Install ArgoCD in a k8s cluster using Helm chart while ensuring that CRDs are not installed (as they are pre-installed). follow steps below.
 Requirements:
 Add the official ArgoCD Helm repository with the name argo.
 Generate a Helm template from the Argo CD chart version 7.7.3 for the argocd namespace.
 Ensure that CRDs are not installed by configuringthe ahrt accordingly.
 save the generated YAML manifest to /home/argo/argo-helm.yaml
 
-QUESTION 02: Update the existing deployment wordpress , adding a sidecar conatiner named sidecar using the busybox:stable image to the existing pod.
+QUESTION 02: SIDE CAR UDEMY MOCK2 QUES2 
+Update the existing deployment wordpress , adding a sidecar conatiner named sidecar using the busybox:stable image to the existing pod.
 The new sidecar container has to run the following command: "/bin/sh -c "tail -f /var/log/wordpress.log" use a volume mounted at /var/log to make the log file wordpress.log availabe to the
 co-located container. 
 
-QUESTION03: 
+QUESTION03: GATEWAY API
 You have an existing web application deployed in a kubernetes cluster using an Ingress resource named web. you must migrate the existing Ingress configuration to the new kubernetes Gateway API, 
 maintaining the existing HTTPS access configuration.
 
@@ -21,7 +24,7 @@ TASK:
 Create an HTTPRoute resource named web-route with hostname gateway.webk8s.local that maintanis the existing routing rules from the current Ingress resource named web.
 ## NOTE: A Gateway named nginx-class is already installed in the cluster. 
 
-Question 04:
+Question 04: RESOURCE REQUEST  mock3 ques12
 you are managing a wordpress application running in a k8s cluster.
 your task is to adjust the pod resource request and limits to ensure stable operation . follow the instruction below:
 
@@ -32,13 +35,13 @@ your task is to adjust the pod resource request and limits to ensure stable oper
 Ensure That both the init container and main container use exactly the sae resource requests and limits.
 After making the changes, scale the Deploymen back to 3 replicas.
 
-Question 05:
+Question 05: STORAGE CLASS  same AS UDEMY MOCK2 1ST QUESTION mock3 ques3
 Create a new StorageClass named local-kiddie with the provisioner rancher.io/local-path.
 set the volumeBindingMode to WaitForFirstConsumer.
 Configure the StorageClass as the deafult StorageClass.
 Do not modify any existing Deploymnet or PersistentVolumeClaims.
 
-Question06: Priority Class
+Question06: Priority Class  mock3 ques05
 You're working in a k8s cluster with an existing Deployment named busybox-logger running in a namespace called priority.
 The cluster already ha at least one user-defined priority Class.
 Perform the following task:
@@ -46,7 +49,7 @@ Perform the following task:
 user-defined priority class value.
 2: Patch the existing Deployment busybox-logger in the priority namespace to use the newly created high-priority priority class.
 
-Question 07: Ingress Resource:
+Question 07: Ingress Resource:  UDEMY MOCK2 QUES3 
 Create a new Ingress resource named echo in echo-sound namespace.
 with the following tasks:
 1. Expose the deployment with a service named echo-service on http://example.org/echo using Service port 8080 type=NodePort
@@ -59,21 +62,21 @@ TAsk:
 2. Using kubectl, extract the documentation for the subject specification field of the Certificate Custom Resource and save it to ~/subject.yaml
 You may use any output format that kubectl supports. 
 
-Question 09: Network Policy
-
+Question 09: Network Policy  mock2 q11
+ 
 There are 2 deployments frotedn and backend 
 Frontend will be in frontedn namespace and backend will be in backend namespace.
 Task:
 Create a network policy to have interaction b/w frontedn and backend deployment The network policy has to be least permissive.
 
-Question 10: HPA
+Question 10: HPA mock2 ques8 mock3 ques 11 
 Ceate a new HorizonatlPodAutoSacler {HPA} named apache-server in the autoscaler namespace.
 Task:
 1. This HPA must target the existing deployment called apache-deployment in the autoscale namespace.
 2: Set the HPA to target for 50% CPU usage per pod.
 3. Configure the HPA to have a minimum of 1 pod and maximum of 4 pods. also we have to set the downscale stabilization window to 30 seconds.
 
-Question:11 Container network Interface [CNI]
+Question:11 Container network Interface [CNI] 
 Install and configure a CNI of your choice that meet the specified requiremets, choose one of the following;
 Flannel (v0.26.1) using the manifest: [kube-flannel.yaml]
 (https://github.com/flannel-io/flannel/release/download/v0.26.1/kube-flannel.yml)
@@ -87,14 +90,14 @@ The CNI you choose must:
 2: Support network policy enforcement
 3: Install from manifest
 
-Question 12: PVC
+Question 12: PVC  mock3 ques8
 A Persistent volume already exists and is retained for reuse.
 Create a PersistentVolumeClaim named Mariadb in the mariadb namespace as follows:
 1: Access mode ReadWriteOnce
 2: Storage capacity 250Mi
 Edit the mariadb in the file located at maria.deloy.yaml to use the newly created PVC. Verify the deployment is running & is stable.
 
-Question 13: CRI-Dockerd  --> Setup cri-dockerd
+Question 13: CRI-Dockerd  --> Setup cri-dockerd  mock3 ques 01
 Install the debian package ~/cri-dockerd_0.3.9.3-0.ubunut-jammy_amd64.deb using dpkg.
 Enable and start the cri-docker service
 1. Set net.bridge.bridge-nf-call-iptables to 1
@@ -102,13 +105,13 @@ Enable and start the cri-docker service
 3. Set net.ipv4.ip_forward to 1
 4. Set net.netfilter.nf_contrack_max to 11072
 
-Question 14: Troubleshooting
+Question 14: Troubleshooting m
 After A cluster migration, the controlplane kube-apiserver is not coming up.
 "Before migration"
 etcd was external and in HA
 After migration kube-apiserver was pointing to ectd peer port 2380 instead of 2379 fir it.
 
-Question15: Taint & Toleration:
+Question15: Taint & Toleration: mock3 ques7
 Task:
 1. Add a taint to node01 so that no normal pods can be schedule in the node.
 2. key=IT value=kiddie Type=NoSchedule
@@ -120,13 +123,13 @@ TASK:
 2. Create a new Service named nodeport-service exposing the container port 80 and TCP 
 3. Configure the new Service to also expose the individual pods using Nodeport.
 
-Question 17: TLS 
+Question 17: TLS mock2 q 5 q9
 There is an existing deployment called nginx-static in the nginx-static namespace, The deployment conatins a ConfigMap that supports TLSv1.2 & TLSv1.3 & a 
 Secret for TLS   
 
 There is a service called nginx-static in the nginx-static namespace that is currently exposing the deployment.
 TASK:
-1. Configure the configma to only support TLSv1.3
+1. Configure the configmap to only support TLSv1.3
 2. Add the IP address of the service in /ect/hosts and name ITkiddie.k8s.local
 3: verify that everything is working using the following command:
 
